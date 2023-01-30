@@ -45,7 +45,7 @@ export class SalesComponent implements OnInit {
     productId: ['', Validators.required],
     lotId: ['', Validators.required],
     quantity: [0, Validators.required],
-    totalPrice: [0, Validators.required],
+    totalprice: [0, Validators.required],
   });
 
   constructor(
@@ -277,7 +277,7 @@ export class SalesComponent implements OnInit {
       productId: sale.product.id,
       lotId: sale.lot.id,
       quantity: sale.quantity,
-      totalPrice: sale.totalprice,
+      totalprice: sale.totalprice,
     });
   }
 
@@ -291,7 +291,7 @@ export class SalesComponent implements OnInit {
       productId: '',
       lotId: '',
       quantity: 0,
-      totalPrice: 0,
+      totalprice: 0,
     });
 
     this.formSubmitted = false;
@@ -318,10 +318,10 @@ export class SalesComponent implements OnInit {
       (product) => product.id === this.salesForm.value.productId
     );
 
-    const totalPrice = product?.price! * this.salesForm.value.quantity!;
+    const totalprice = product?.price! * this.salesForm.value.quantity!;
 
     this.salesForm.patchValue({
-      totalPrice,
+      totalprice,
     });
   }
 
