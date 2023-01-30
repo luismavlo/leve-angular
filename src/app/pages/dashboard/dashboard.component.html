@@ -1,0 +1,206 @@
+<div class="container-fluid">
+  <div class="col-12">
+    <h1>Informes</h1>
+    <div class="separator mb-5"></div>
+  </div>
+
+  <div class="row mb-4">
+    <div class="col-12">
+      <div class="card h-100">
+        <div class="card-body">
+          <h5 class="mb-4">Filtrado</h5>
+          <form
+            autocomplete="false"
+            [formGroup]="reportForm"
+            (submit)="executeAllReports()"
+          >
+            <div class="form-group mb-3">
+              <label>Fecha Inicial</label>
+              <input
+                type="date"
+                class="form-control datepicker"
+                formControlName="initDate"
+              />
+            </div>
+            <div class="form-group mb-3">
+              <label>Fecha Final</label>
+              <input
+                type="date"
+                class="form-control datepicker"
+                formControlName="endDate"
+              />
+            </div>
+            <button type="submit" class="btn btn-primary mb-1">Filtrar</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-12">
+      <div class="icon-cards-row">
+        <div class="glide dashboard-numbers">
+          <div class="glide__track" data-glide-el="track">
+            <ul class="glide__slides row">
+              <li class="glide__slide col-lg-3 col-md-4 col-sm-6 col-12">
+                <div class="card">
+                  <div class="card-body text-center">
+                    <i class="iconsminds-handshake"></i>
+                    <p class="card-text mb-0">Ventas Por Periodo</p>
+                    <p class="lead text-center">{{ sales }}</p>
+                  </div>
+                </div>
+              </li>
+              <li class="glide__slide col-lg-3 col-md-4 col-sm-6 col-12">
+                <div class="card">
+                  <div class="card-body text-center">
+                    <i class="iconsminds-bar-chart-4"></i>
+                    <p class="card-text mb-0">Producción Por Periodo</p>
+                    <p class="lead text-center">{{ production }}</p>
+                  </div>
+                </div>
+              </li>
+              <li class="glide__slide col-lg-3 col-md-4 col-sm-6 col-12">
+                <div class="card">
+                  <div class="card-body text-center">
+                    <i class="iconsminds-dollar"></i>
+                    <p class="card-text mb-0">Gastos Operativos Por Periodo</p>
+                    <p class="lead text-center">{{ operationalExpenses }}</p>
+                  </div>
+                </div>
+              </li>
+              <li class="glide__slide col-lg-3 col-md-4 col-sm-6 col-12">
+                <div class="card">
+                  <div class="card-body text-center">
+                    <i class="iconsminds-dollar"></i>
+                    <p class="card-text mb-0">
+                      Gastos Administrativos Por Periodo
+                    </p>
+                    <p class="lead text-center">{{ administrativeExpenses }}</p>
+                  </div>
+                </div>
+              </li>
+              <li class="glide__slide col-lg-3 col-md-4 col-sm-6 col-12">
+                <div class="card">
+                  <div class="card-body text-center">
+                    <i class="iconsminds-dollar"></i>
+                    <p class="card-text mb-0">
+                      Gastos Publicitarios Por Periodo
+                    </p>
+                    <p class="lead text-center">{{ marketingExpenses }}</p>
+                  </div>
+                </div>
+              </li>
+              <li class="glide__slide col-lg-3 col-md-4 col-sm-6 col-12">
+                <div class="card">
+                  <div class="card-body text-center">
+                    <i class="iconsminds-dollar"></i>
+                    <p class="card-text mb-0">Otros Gastos Por Periodo</p>
+                    <p class="lead text-center">{{ otherExpenses }}</p>
+                  </div>
+                </div>
+              </li>
+              <li class="glide__slide col-lg-3 col-md-4 col-sm-6 col-12">
+                <div class="card">
+                  <div class="card-body text-center">
+                    <i class="iconsminds-line-chart-1"></i>
+                    <p class="card-text mb-0">Ganancia Por Periodo</p>
+                    <p class="lead text-center">{{ proceeds }}</p>
+                  </div>
+                </div>
+              </li>
+              <li class="glide__slide col-lg-3 col-md-4 col-sm-6 col-12">
+                <div class="card">
+                  <div class="card-body text-center">
+                    <i class="iconsminds-affiliate"></i>
+                    <p class="card-text mb-0">Nuevos Clientes</p>
+                    <p class="lead text-center">{{ clients }}</p>
+                  </div>
+                </div>
+              </li>
+              <li class="glide__slide col-lg-3 col-md-4 col-sm-6 col-12">
+                <div class="card">
+                  <div class="card-body text-center">
+                    <i
+                      class="iconsminds-coins"
+                      (click)="getUtility()"
+                      style="cursor: pointer"
+                    ></i>
+                    <p class="card-text mb-0">Total De Gastos Por Periodo</p>
+                    <p class="lead text-center">{{ totalExpenses }}</p>
+                  </div>
+                </div>
+              </li>
+              <li class="glide__slide col-lg-3 col-md-4 col-sm-6 col-12">
+                <div class="card">
+                  <div class="card-body text-center">
+                    <i
+                      class="iconsminds-financial"
+                      (click)="getUtility()"
+                      style="cursor: pointer"
+                    ></i>
+                    <p class="card-text mb-0">Utilidad Por Periodo</p>
+                    <p class="lead text-center">{{ utility }}</p>
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div
+  class="alert alert-info"
+  *ngIf="barChartData.labels?.length === 0; else divGraphic"
+>
+  cargando...
+</div>
+
+<div
+  class="alert alert-info"
+  *ngIf="barChartDataExpensesVsProceeds.labels?.length === 0; else divGraphic2"
+>
+  cargando...
+</div>
+
+<div class="container-fluid">
+  <div class="row">
+    <ng-template #divGraphic>
+      <div class="col-12">
+        <canvas
+          baseChart
+          class="chart"
+          [data]="barChartData"
+          [options]="barChartOptions"
+          [type]="barChartType"
+          (chartHover)="chartHovered($event)"
+          (chartClick)="chartClicked($event)"
+        >
+        </canvas>
+      </div>
+    </ng-template>
+  </div>
+</div>
+
+<div class="container-fluid">
+  <div class="row">
+    <ng-template #divGraphic2>
+      <div class="col-12">
+        <canvas
+          baseChart
+          class="chart"
+          [data]="barChartDataExpensesVsProceeds"
+          [options]="barChartOptions"
+          [type]="barChartType"
+          (chartHover)="chartHovered($event)"
+          (chartClick)="chartClicked($event)"
+        >
+        </canvas>
+      </div>
+    </ng-template>
+  </div>
+</div>
