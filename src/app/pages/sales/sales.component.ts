@@ -277,7 +277,7 @@ export class SalesComponent implements OnInit {
       productId: sale.product.id,
       lotId: sale.lot.id,
       quantity: sale.quantity,
-      totalPrice: sale.totalPrice,
+      totalPrice: sale.totalprice,
     });
   }
 

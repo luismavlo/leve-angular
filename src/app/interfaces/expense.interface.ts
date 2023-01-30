@@ -16,6 +16,6 @@ export interface DataExpense {
   value: number;
   type: string;
   status: boolean;
-  createAt: Date;
+  createat: Date;
   updateAt: Date;
 }

@@ -24,7 +24,7 @@ export class ExpensesService {
   getAllExpenses(offset: number): Observable<ExpenseResp> {
     const params = new HttpParams().set('limit', 5).set('offset', offset);
 
-    return this.http.get<ExpenseResp>(`${base_url}/expenses`, {
+    return this.http.get<ExpenseResp>(`/api/v1/expenses`, {
       headers: tokenHeader.headers,
       params,
     });
@@ -40,7 +40,7 @@ export class ExpensesService {
     limit: number = 5
   ): Observable<ExpenseResp> {
     const params = new HttpParams().set('limit', limit).set('offset', offset);
-    return this.http.get<ExpenseResp>(`${base_url}/expenses/type/${term}`, {
+    return this.http.get<ExpenseResp>(`/api/v1/expenses/type/${term}`, {
       headers: tokenHeader.headers,
       params,
     });
@@ -52,7 +52,7 @@ export class ExpensesService {
    * @returns Observable<ExpenseResp>
    */
   getExpensesById(id: string): Observable<DataExpense> {
-    return this.http.get<DataExpense>(`${base_url}/expenses/${id}`, {
+    return this.http.get<DataExpense>(`/api/v1/expenses/${id}`, {
       headers: tokenHeader.headers,
     });
   }
@@ -64,7 +64,7 @@ export class ExpensesService {
    * @returns Observable<ExpenseResp>
    */
   createExpense(expense: Expense): Observable<DataExpense> {
-    return this.http.post<DataExpense>(`${base_url}/expenses`, expense, {
+    return this.http.post<DataExpense>(`/api/v1/expenses`, expense, {
       headers: tokenHeader.headers,
     });
   }
@@ -77,7 +77,7 @@ export class ExpensesService {
    * @returns Observable<ExpenseResp>
    */
   updateExpense(expense: Expense, id: string): Observable<DataExpense> {
-    return this.http.patch<DataExpense>(`${base_url}/expenses/${id}`, expense, {
+    return this.http.patch<DataExpense>(`/api/v1/expenses/${id}`, expense, {
       headers: tokenHeader.headers,
     });
   }
@@ -89,14 +89,14 @@ export class ExpensesService {
    * @returns Observable<any>
    */
   deleteExpense(id: string): Observable<any> {
-    return this.http.delete<any>(`${base_url}/expenses/${id}`, {
+    return this.http.delete<any>(`/api/v1/expenses/${id}`, {
       headers: tokenHeader.headers,
     });
   }
 
   createExpensePerLot(lotId: string, expenseId: string) {
     return this.http.post(
-      `${base_url}/expenses-per-lots`,
+      `/api/v1/expenses-per-lots`,
       {
         lotId,
         expenseId,
@@ -108,7 +108,7 @@ export class ExpensesService {
   }
 
   deleteExpensePerLot(lotId: string) {
-    return this.http.delete(`${base_url}/expenses-per-lots/${lotId}`, {
+    return this.http.delete(`/api/v1/expenses-per-lots/${lotId}`, {
       headers: tokenHeader.headers,
     });
   }

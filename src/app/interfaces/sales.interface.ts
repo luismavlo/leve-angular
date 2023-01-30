@@ -6,9 +6,9 @@ export interface SaleResp {
 export interface DataSale {
   id: string;
   quantity: number;
-  totalPrice: number;
+  totalprice: number;
   status: boolean;
-  createAt: Date;
+  createat: Date;
   updateAt: Date;
   client: Client;
   product: Product;
@@ -71,5 +71,5 @@ export interface Sale {
   productId: '';
   lotId: '';
   quantity: 0;
-  totalPrice: 0;
+  totalprice: 0;
 }

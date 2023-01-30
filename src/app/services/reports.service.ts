@@ -28,7 +28,7 @@ export class ReportsService {
       .set('initDate', initDate)
       .set('endDate', endDate);
 
-    return this.http.get(`${base_url}/sales/report`, {
+    return this.http.get(`/api/v1/sales/report`, {
       headers: tokenHeader.headers,
       params,
     });
@@ -45,7 +45,7 @@ export class ReportsService {
       .set('initDate', initDate)
       .set('endDate', endDate);
 
-    return this.http.get(`${base_url}/lots/report/production`, {
+    return this.http.get(`/api/v1/lots/report/production`, {
       headers: tokenHeader.headers,
       params,
     });
@@ -62,7 +62,7 @@ export class ReportsService {
       .set('initDate', initDate)
       .set('endDate', endDate);
 
-    return this.http.get(`${base_url}/expenses/report/admin`, {
+    return this.http.get(`/api/v1/expenses/report/admin`, {
       headers: tokenHeader.headers,
       params,
     });
@@ -80,7 +80,7 @@ export class ReportsService {
       .set('initDate', initDate)
       .set('endDate', endDate);
 
-    return this.http.get(`${base_url}/expenses/report/advertising`, {
+    return this.http.get(`/api/v1/expenses/report/advertising`, {
       headers: tokenHeader.headers,
       params,
     });
@@ -97,7 +97,7 @@ export class ReportsService {
       .set('initDate', initDate)
       .set('endDate', endDate);
 
-    return this.http.get(`${base_url}/expenses/report/other`, {
+    return this.http.get(`/api/v1/expenses/report/other`, {
       headers: tokenHeader.headers,
       params,
     });
@@ -115,7 +115,7 @@ export class ReportsService {
       .set('initDate', initDate)
       .set('endDate', endDate);
 
-    return this.http.get(`${base_url}/expenses-per-lots/report/operational`, {
+    return this.http.get(`/api/v1/expenses-per-lots/report/operational`, {
       headers: tokenHeader.headers,
       params,
     });
@@ -133,7 +133,7 @@ export class ReportsService {
       .set('initDate', initDate)
       .set('endDate', endDate);
 
-    return this.http.get(`${base_url}/sales/report/proceeds`, {
+    return this.http.get(`/api/v1/sales/report/proceeds`, {
       headers: tokenHeader.headers,
       params,
     });
@@ -151,7 +151,7 @@ export class ReportsService {
       .set('initDate', initDate)
       .set('endDate', endDate);
 
-    return this.http.get(`${base_url}/clients/report`, {
+    return this.http.get(`/api/v1/clients/report`, {
       headers: tokenHeader.headers,
       params,
     });
@@ -163,7 +163,7 @@ export class ReportsService {
    */
   getLotsReportProceedsExpense(): Observable<ReportLotExpenseProceeds> {
     return this.http.get<ReportLotExpenseProceeds>(
-      `${base_url}/lots/report/expeses-proceeds`,
+      `/api/v1/lots/report/expeses-proceeds`,
       {
         headers: tokenHeader.headers,
       }
@@ -185,7 +185,7 @@ export class ReportsService {
       .set('initDate', initDate)
       .set('endDate', endDate);
     return this.http.get<ProceedsVsExpense>(
-      `${base_url}/sales/report/abstract/proceeds/expenses`,
+      `/api/v1/sales/report/abstract/proceeds/expenses`,
       {
         headers: tokenHeader.headers,
         params,

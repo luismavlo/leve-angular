@@ -19,7 +19,7 @@ export class SaleService {
    * @returns The sale with the id that was passed in.
    */
   getSaleById(id: string): Observable<DataSale> {
-    return this.http.get<DataSale>(`${base_url}/sales/${id}`, {
+    return this.http.get<DataSale>(`/api/v1/sales/${id}`, {
       headers: tokenHeader.headers,
     });
   }
@@ -32,7 +32,7 @@ export class SaleService {
    */
   getSales(offset: number, limit: number = 5): Observable<SaleResp> {
     const params = new HttpParams().set('limit', limit).set('offset', offset);
-    return this.http.get<SaleResp>(`${base_url}/sales`, {
+    return this.http.get<SaleResp>(`/api/v1/sales`, {
       headers: tokenHeader.headers,
       params,
     });
@@ -51,7 +51,7 @@ export class SaleService {
     offset: number
   ): Observable<SaleResp> {
     const params = new HttpParams().set('limit', 5).set('offset', offset);
-    return this.http.get<SaleResp>(`${base_url}/sales/${type}/${term}`, {
+    return this.http.get<SaleResp>(`/api/v1/sales/${type}/${term}`, {
       headers: tokenHeader.headers,
       params,
     });
@@ -63,7 +63,7 @@ export class SaleService {
    * @returns Observable<any>
    */
   createSale(sale: Sale): Observable<any> {
-    return this.http.post<any>(`${base_url}/sales`, sale, {
+    return this.http.post<any>(`/api/v1/sales`, sale, {
       headers: tokenHeader.headers,
     });
   }
@@ -75,7 +75,7 @@ export class SaleService {
    * @returns The updated sale.
    */
   updateSale(sale: Sale, id: string): Observable<any> {
-    return this.http.patch<any>(`${base_url}/sales/${id}`, sale, {
+    return this.http.patch<any>(`/api/v1/sales/${id}`, sale, {
       headers: tokenHeader.headers,
     });
   }
@@ -86,7 +86,7 @@ export class SaleService {
    * @returns an observable of type any.
    */
   deleteSale(id: string): Observable<any> {
-    return this.http.delete<any>(`${base_url}/sales/${id}`, {
+    return this.http.delete<any>(`/api/v1/sales/${id}`, {
       headers: tokenHeader.headers,
     });
   }

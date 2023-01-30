@@ -14,7 +14,7 @@ export class ClientService {
   constructor(private http: HttpClient) {}
 
   getClient(term: string): Observable<ClientResp> {
-    return this.http.get<ClientResp>(`${base_url}/clients/${term}`, {
+    return this.http.get<ClientResp>(`/api/v1/clients/${term}`, {
       headers: tokenHeader.headers,
     });
   }
@@ -22,7 +22,7 @@ export class ClientService {
   getAllClientByTerm(term: string, offset: number): Observable<ClientResp> {
     const params = new HttpParams().set('limit', 5).set('offset', offset);
 
-    return this.http.get<ClientResp>(`${base_url}/clients/term/${term}`, {
+    return this.http.get<ClientResp>(`/api/v1/clients/term/${term}`, {
       headers: tokenHeader.headers,
       params,
     });
@@ -31,26 +31,26 @@ export class ClientService {
   getClients(offset: number, limit: number = 5): Observable<ClientResp> {
     const params = new HttpParams().set('limit', limit).set('offset', offset);
 
-    return this.http.get<ClientResp>(`${base_url}/clients`, {
+    return this.http.get<ClientResp>(`/api/v1/clients`, {
       headers: tokenHeader.headers,
       params,
     });
   }
 
   createClient(client: Client): Observable<ClientResp> {
-    return this.http.post<ClientResp>(`${base_url}/clients`, client, {
+    return this.http.post<ClientResp>(`/api/v1/clients`, client, {
       headers: tokenHeader.headers,
     });
   }
 
   updateClient(client: Client, id: string): Observable<ClientResp> {
-    return this.http.patch<ClientResp>(`${base_url}/clients/${id}`, client, {
+    return this.http.patch<ClientResp>(`/api/v1/clients/${id}`, client, {
       headers: tokenHeader.headers,
     });
   }
 
   deleteClient(id: string): Observable<any> {
-    return this.http.delete<any>(`${base_url}/clients/${id}`, {
+    return this.http.delete<any>(`/api/v1/clients/${id}`, {
       headers: tokenHeader.headers,
     });
   }
