@@ -25,7 +25,7 @@ export class UserService {
   checkToken(): Observable<boolean> {
     const token = localStorage.getItem('token') || '';
     return this.http
-      .get<LoginResp>(`http://localhost:3000/api/v1/users/check-auth-status`, {
+      .get<LoginResp>(`/api/v1/users/check-auth-status`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -42,7 +42,7 @@ export class UserService {
 
   getInfo(): Observable<LoginResp> {
     const token = localStorage.getItem('token') || '';
-    return this.http.get<LoginResp>(`http://localhost:3000/api/v1/users/check-auth-status`, {
+    return this.http.get<LoginResp>(`/api/v1/users/check-auth-status`, {
       headers: {
         Authorization: `Bearer ${token}`,
       },
@@ -56,7 +56,7 @@ export class UserService {
    * @returns Observable<LoginResp>
    */
   createUser(formData: RegisterForm): Observable<LoginResp> {
-    return this.http.post<LoginResp>(`http://localhost:3000/api/v1/users`, formData).pipe(
+    return this.http.post<LoginResp>(`/api/v1/users`, formData).pipe(
       tap((resp) => {
         localStorage.setItem('token', resp.token);
       })
@@ -70,7 +70,7 @@ export class UserService {
    * @returns Observable<LoginResp>
    */
   login(formData: LoginForm): Observable<LoginResp> {
-    return this.http.post<LoginResp>(`http://localhost:3000/api/v1/users/login`, formData).pipe(
+    return this.http.post<LoginResp>(`/api/v1/users/login`, formData).pipe(
       tap((resp) => {
         localStorage.setItem('token', resp.token);
       })
