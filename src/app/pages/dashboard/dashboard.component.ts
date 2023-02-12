@@ -28,6 +28,20 @@ export class DashboardComponent implements OnInit {
   public role!: string;
   // public expensesVsProceeds!: number;
 
+  // title = 'Analisis de Gasto - Ganancia'
+  // type: any = 'ColumnChart';
+  // data = [
+  //   ['2012', 900, 390],
+  //   ['2013', 1000, 400],
+  //   ['2014', 1170, 440],
+  //   ['2015', 1250, 480],
+  //   ['2016', 1530, 540],
+  // ];
+  // columnNames: any = ['Year', 'Asia', 'Europe'];
+  // options = {};
+  // width = 550;
+  // height = 400;
+
   public reportForm = this.fb.group({
     initDate: [moment().format('DD-MM-YYYY'), [Validators.required]],
     endDate: [
@@ -108,6 +122,20 @@ export class DashboardComponent implements OnInit {
   }
 
   executeAllReports() {
+    this.getLotsReportProceedsExpense();
+    this.getNumberSalesReports();
+    this.getProductionReports();
+    this.getOperationalExpenses();
+    this.getAdministrativeExpenses();
+    this.getMarketingExpenses();
+    this.getOtherExpenses();
+    this.getProceeds();
+    this.getNumberClients();
+    this.totalExpenses = 0;
+    this.utility = 0;
+  }
+
+  executeAllReportsByPressFilter() {
     this.getLotsReportProceedsExpense();
     this.getNumberSalesReports();
     this.getProductionReports();

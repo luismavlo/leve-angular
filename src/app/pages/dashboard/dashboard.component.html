@@ -12,7 +12,7 @@
           <form
             autocomplete="false"
             [formGroup]="reportForm"
-            (submit)="executeAllReports()"
+            (submit)="executeAllReportsByPressFilter()"
           >
             <div class="form-group mb-3">
               <label>Fecha Inicial</label>
@@ -204,3 +204,13 @@
     </ng-template>
   </div>
 </div>
+
+<!-- <google-chart #chart
+   [title]="title"
+   [type]="type"
+   [data]="data"
+   
+   [options]="options"
+   [width]="width"
+   [height]="height">
+</google-chart> -->

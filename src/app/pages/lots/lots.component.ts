@@ -3,8 +3,10 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { DataExpense, ExpenseResp } from 'src/app/interfaces/expense.interface';
 import { DataLot, Lot, LotResp } from 'src/app/interfaces/lot.interface';
+import { ProductDetail } from 'src/app/interfaces/product.interface';
 import { ExpensesService } from 'src/app/services/expenses.service';
 import { LotService } from 'src/app/services/lot.service';
+import { ProductService } from 'src/app/services/product.service';
 import { UserService } from 'src/app/services/user.service';
 import { generateRandomString } from 'src/app/utils/getCode';
 
@@ -47,18 +49,32 @@ export class LotsComponent implements OnInit {
   public expenseLotForm = this.fb.group({
     expense: ['', Validators.required],
   });
+  public products!: ProductDetail[]
 
   constructor(
     private fb: FormBuilder,
     private lotService: LotService,
     private expensesService: ExpensesService,
     private readonly userService: UserService,
-    private router: Router
+    private router: Router,
+    private productService: ProductService
   ) {}
 
   ngOnInit(): void {
     this.getAllLots();
     this.redirectTo();
+    this.getProducts()
+  }
+  
+  getProducts(){
+    this.productService.getProducts().subscribe({
+      next: resp => {
+        this.products = resp
+      },
+      error: ({ error }) => {
+        console.error(error)
+      }
+    })
   }
 
   /**

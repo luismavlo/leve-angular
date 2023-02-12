@@ -12,6 +12,7 @@ import { ExpensesComponent } from './expenses/expenses.component';
 import { SalesComponent } from './sales/sales.component';
 import { NgSelectModule } from '@ng-select/ng-select';
 import { NgChartsModule } from 'ng2-charts';
+import { GoogleChartsModule } from 'angular-google-charts';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { NgChartsModule } from 'ng2-charts';
     ReactiveFormsModule,
     RouterModule,
     NgSelectModule,
-    NgChartsModule
+    NgChartsModule,
+    GoogleChartsModule
   ],
   exports: [DashboardComponent, PagesComponent],
 })

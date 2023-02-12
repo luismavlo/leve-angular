@@ -19,7 +19,7 @@
         <div class="col-12">
           <div class="card mb-4">
             <div class="card-body">
-              <h5 class="mb-4">Gestión de Vetas</h5>
+              <h5 class="mb-4">Gestión de Ventas</h5>
               <form
                 autocomplete="off"
                 [formGroup]="salesForm"
@@ -62,7 +62,7 @@
                   <input
                     type="number"
                     class="form-control"
-                    placeholder="Ingrese el precio del producto"
+                    placeholder="Ingrese la cantidad"
                     formControlName="quantity"
                     (blur)="calculatePrice()"
                   />
@@ -73,7 +73,7 @@
                   <input
                     type="number"
                     class="form-control"
-                    placeholder="Ingrese el precio del producto"
+                    placeholder="Ingrese el precio total de la venta"
                     formControlName="totalprice"
                   />
                 </div>

@@ -30,7 +30,7 @@
                   <input
                     type="text"
                     class="form-control"
-                    placeholder="Ingrese el codigo deli lote"
+                    placeholder="Ingrese el codigo del lote"
                     formControlName="code"
                   />
                 </div>
@@ -96,9 +96,12 @@
                     data-width="100%"
                     formControlName="typeLot"
                   >
-                    <option value="leche almendra">Leche Almendra</option>
-                    <option value="leche marañon">Leche Marañon</option>
-                    <option value="harina almendra">Harina de Almendra</option>
+                    <option
+                      *ngFor="let product of products"
+                      [value]="product.title"
+                    >
+                      {{ product.title }}
+                    </option>
                   </select>
                 </div>
                 <div class="row">
@@ -152,7 +155,7 @@
                   <input
                     type="number"
                     class="form-control"
-                    placeholder="Ingrese el valor total del lote"
+                    placeholder="Ingrese el gasto de fabricación del lote"
                     formControlName="lotTotalCost"
                   />
                 </div>
@@ -219,9 +222,12 @@
                     (blur)="getAllLotsByTerm('typeLot')"
                   >
                     <option value="todos" selected>Todos</option>
-                    <option value="leche almendra">Leche Almendra</option>
-                    <option value="leche marañon">Leche Marañon</option>
-                    <option value="harina almendra">Harina de Almendra</option>
+                    <option
+                      *ngFor="let product of products"
+                      [value]="product.title"
+                    >
+                      {{ product.title }}
+                    </option>
                   </select>
                 </div>
               </div>
