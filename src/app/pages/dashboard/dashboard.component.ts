@@ -284,7 +284,6 @@ export class DashboardComponent implements OnInit {
       )
       .subscribe({
         next: (data) => {
-          console.log(data);
           this.barChartDataExpensesVsProceeds.labels = data.months;
           this.barChartDataExpensesVsProceeds.datasets[0] = {
             data: data.otherExpensesValues,

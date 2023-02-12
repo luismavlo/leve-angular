@@ -19,7 +19,7 @@ export class LotService {
    * @returns An observable of type LotResp
    */
   getLot(term: string): Observable<DataLot> {
-    return this.http.get<DataLot>(`/api/v1/lots/${term}`, {
+    return this.http.get<DataLot>(`http://localhost:3000/api/v1/lots/${term}`, {
       headers: tokenHeader.headers,
     });
   }
@@ -30,7 +30,7 @@ export class LotService {
    */
   getLots(offset: number, limit: number = 5): Observable<LotResp> {
     const params = new HttpParams().set('limit', limit).set('offset', offset);
-    return this.http.get<LotResp>(`/api/v1/lots`, {
+    return this.http.get<LotResp>(`http://localhost:3000/api/v1/lots`, {
       headers: tokenHeader.headers,
       params,
     });
@@ -49,7 +49,7 @@ export class LotService {
     limit: number = 5
   ): Observable<LotResp> {
     const params = new HttpParams().set('limit', limit).set('offset', offset);
-    return this.http.get<LotResp>(`/api/v1/lots/${type}/${term}`, {
+    return this.http.get<LotResp>(`http://localhost:3000/api/v1/lots/${type}/${term}`, {
       headers: tokenHeader.headers,
       params,
     });
@@ -61,7 +61,7 @@ export class LotService {
    * @returns Observable<any>
    */
   createLot(lot: Lot): Observable<any> {
-    return this.http.post<any>(`/api/v1/lots`, lot, {
+    return this.http.post<any>(`http://localhost:3000/api/v1/lots`, lot, {
       headers: tokenHeader.headers,
     });
   }
@@ -73,7 +73,7 @@ export class LotService {
    * @returns Observable<any>
    */
   updateLot(lot: Lot, id: string): Observable<any> {
-    return this.http.patch<any>(`/api/v1/lots/${id}`, lot, {
+    return this.http.patch<any>(`http://localhost:3000/api/v1/lots/${id}`, lot, {
       headers: tokenHeader.headers,
     });
   }
@@ -84,7 +84,7 @@ export class LotService {
    * @returns Observable<any>
    */
   deleteLot(id: string): Observable<any> {
-    return this.http.delete<any>(`/api/v1/lots/${id}`, {
+    return this.http.delete<any>(`http://localhost:3000/api/v1/lots/${id}`, {
       headers: tokenHeader.headers,
     });
   }

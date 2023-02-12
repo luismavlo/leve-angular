@@ -19,7 +19,7 @@ export class ProductService {
    * @returns An observable of type ProductDetail
    */
   getProduct(term: string): Observable<ProductDetail> {
-    return this.http.get<ProductDetail>(`/api/v1/products/${term}`, {
+    return this.http.get<ProductDetail>(`http://localhost:3000/api/v1/products/${term}`, {
       headers: tokenHeader.headers,
     });
   }
@@ -29,7 +29,7 @@ export class ProductService {
    * @returns An observable of an array of ProductDetail objects.
    */
   getProducts(): Observable<ProductDetail[]> {
-    return this.http.get<ProductDetail[]>(`/api/v1/products`, {
+    return this.http.get<ProductDetail[]>(`http://localhost:3000/api/v1/products`, {
       headers: tokenHeader.headers,
     });
   }
@@ -42,7 +42,7 @@ export class ProductService {
    * @returns The response from the server.
    */
   createProduct(product: Product) {
-    return this.http.post(`/api/v1/products`, product, {
+    return this.http.post(`http://localhost:3000/api/v1/products`, product, {
       headers: tokenHeader.headers,
     });
   }
@@ -55,7 +55,7 @@ export class ProductService {
    * @returns The updated product
    */
   updateProduct(product: Product, id: string) {
-    return this.http.patch(`/api/v1/products/${id}`, product, {
+    return this.http.patch(`http://localhost:3000/api/v1/products/${id}`, product, {
       headers: tokenHeader.headers,
     });
   }
@@ -66,7 +66,7 @@ export class ProductService {
    * @returns The deleteProduct method returns an observable of type any.
    */
   deleteProduct(id: string) {
-    return this.http.delete(`/api/v1/products/${id}`, {
+    return this.http.delete(`http://localhost:3000/api/v1/products/${id}`, {
       headers: tokenHeader.headers,
     });
   }
